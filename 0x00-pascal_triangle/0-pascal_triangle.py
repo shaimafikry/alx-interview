@@ -28,9 +28,10 @@ def pascal_triangle(n):
             for m in range(start_row):
               row_list.append(all_list[target_row][m])
               # how to make it only limitid to the new elemnts
-              if m >= idx and m < start_row:
+              if m >= idx and m != start_row:
                 # i want to add oly the new num
                   row_list[m] = all_list[target_row][m - 1] + all_list[target_row][m]
+            
         start_row += 1
         all_list.append(row_list)
     return all_list
