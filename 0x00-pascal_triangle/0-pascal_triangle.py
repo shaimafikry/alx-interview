@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""pasacal triangle in code
+   n represnts the num of lists (rows)
+   return: all lists
+  """
 
 
 def pascal_triangle(n):
