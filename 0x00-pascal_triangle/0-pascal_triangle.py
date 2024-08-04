@@ -1,37 +1,25 @@
 #!/usr/bin/python3
 
-# n represent num of row
+
 def pascal_triangle(n):
+    # edge casses
     if n <= 0:
-        return []
-    all_list = [[1],[1, 1]]
-    # pascal formula is (n)Cm = (n-1)Cm-1 + (n-1)Cm
-    #plan
+        return [[]]
+    if n == 1:
+        return [[1]]
+    if n == 2:
+        return [[1], [1, 1]]
+    all_list = [[1], [1, 1]]
     # loop through every row
-    # start row = 1
-    # row = length
-    # start_row = 1
-    # n = n - 2
     for row in range(2, n):
-        # initiizing new row
-        row_list = []
-        # list_length = prev row + 1
-        # list_length = start_row + 1
-        # loop through every row
-        # length decided by the row umber
-        # idx is the start point of new added elements
-        idx = row - 1
-        start_row = row
-        for i in range(start_row):
-            target_row = start_row - 1
-            # add the old nums
-            for m in range(start_row):
-              row_list.append(all_list[target_row][m])
-              # how to make it only limitid to the new elemnts
-              if m >= idx and m != start_row:
-                # i want to add oly the new num
-                  row_list[m] = all_list[target_row][m - 1] + all_list[target_row][m]
-            
-        start_row += 1
+        # 1 is first value always
+        row_list = [1]
+        # addabl values == row length
+        for i in range(1, row):
+            # pascal formula is (n)Cm = (n-1)Cm-1 + (n-1)Cm
+            m = all_list[row - 1][i - 1] + all_list[row - 1][i]
+            row_list.append(m)
+        # 1 last value alaways
+        row_list.append(1)
         all_list.append(row_list)
     return all_list

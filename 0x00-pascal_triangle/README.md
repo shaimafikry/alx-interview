@@ -16,3 +16,16 @@ Let us understand this with an example. If we want to find the 3rd element in th
 ⇒ 4C2 = 3C1 + 3C2
 
 So, this means we need to add the 2nd element in the 3rd row (i.e. 3) with the 3rd element in the 3rd row (i.e. 3.). So our answer will be 4C2 = 3 + 3 = 6
+
+# My attemps:
+At first, i added deafult values to all_lis to start with [[1], [1, 1]]
+- excluded the specil casses before loops
+- tried to loop through every row in the all list ( first loop)
+- added [1] as first element and a last element always
+- looped in range of (1, row) as row = num of elelemnts added [exclude the both 1](second loop)
+- used the pascal formula "" (n)Cm = (n-1)Cm-1 + (n-1)Cm "" , worked coz i have default values
+- add row ( lists) to to all_list 
+- return it
+
+# problem faced
+I took a long time to figure out how i would manage the loops dynmically, and this was hard with the value (1) at start and end, didnt get it at first but finally it's hard coded :)
