@@ -1,7 +1,8 @@
 #!/usr/bin/python3
+
 """
-    module for the functon (canUnlockall)
-    """
+  module for the functon (canUnlockall)
+"""
 def canUnlockAll(boxes):
     """_summary_
         method that determines
