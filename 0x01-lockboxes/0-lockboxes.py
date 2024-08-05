@@ -22,11 +22,13 @@ def canUnlockAll(boxes):
     # have first keys as a start
     # make a deep copy of the orginal list
     keys = boxes[0][:]
+    # get the keys based on index
+    for i in range (1, n):
+        # check for i in existing keys
+        if i in keys:
+            keys += boxes[i]
     for i in range(1, n):
         # check if i in the list of keys
-        if i in keys:
-            # add a new keys to the list
-            keys += boxes[i]
-        else:
+        if i not in keys:
             return False
     return True
