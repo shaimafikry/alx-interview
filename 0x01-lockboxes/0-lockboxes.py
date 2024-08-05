@@ -11,3 +11,12 @@ def canUnlockAll(boxes):
     Return:
         boolen: 
     """
+	  n = len(boxes)
+	  keys = boxes[0][:]
+	  for i in range (1, n):
+	    if i in keys:
+	      keys += boxes[i]
+	    else:
+	      return False	      
+	  return True
+	    
