@@ -26,32 +26,15 @@ def minOperations(n):
         return 0
     if n == 2:
         return 2
-    # define varibales
-    # i have an H as default
-    h = 1
-    # there is always a copy_all and paste at least once
-    operation = 0
-    third_n = n / 3
+    h = 2
+    operation = 2
     copy = 1
-    goal = 0
     while h < n:
         # check if it less tha a half
-        if h < third_n:
-            # copy and paste the value
-            operation += 2
-            copy = h
-        elif h == third_n:
-            # copy , paste
-            operation += 2
-            copy = h
-        elif h > third_n:
-            goal = h - third_n
-            if goal <= copy:
-                # only paste
-                if (h + copy) >= n:
-                    operation += 1
-                else:
-                    operation += 2
-                    copy = h
+        if (h + copy) >= n:
+          operation += 1
+        else:
+          operation += 2
+          copy = h
         h += copy
     return operation
