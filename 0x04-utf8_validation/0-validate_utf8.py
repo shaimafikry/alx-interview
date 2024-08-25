@@ -2,7 +2,7 @@
 """
 Main file for func
 """
-
+# data = [125, 125, 545, 458] represent the 4 bytes
 
 
 def validUTF8(data):
@@ -11,36 +11,32 @@ def validUTF8(data):
     Return: True if data is a valid UTF-8 encoding,
             else False
 """
+    seq_left = 0
     for i in data:
         temp = bin(i)
         # del the 0b at first and fill 0
         temp = temp[2:].zfill(8)
-        # print(len(temp))
-        # print(temp)
+        # case one seq
         if temp[0] == '0':
             continue
         # check for squences
         elif temp.startswith('110'):
-            # means 2 seq
-            # check for the sec seq
-            if temp[8:].startswith('10'):
-                continue
-            else:
-                return False
-        elif temp.startswith('1110'):
-            # means 3 seq
-            # check for the sec seq
-            if [temp[8:10], temp[16:18]] == ['10', '10']:
-                continue
-            else:
-                return False
+            # case 2
+            seq_left = 1
+        elif temp.startswith('110'):
+            # case 3
+            seq_left = 2
         elif temp.startswith('11110'):
-            # means 4 seq
-            # check for the sec seq
-            if [temp[8:10], temp[16:18], temp[32:34]] == ['10', '10', '10']:
-                    continue
-            else:
-                return False
+            # case 4
+            seq_left = 3
         else:
-          return False
-    return True
+            # case not 0 or 110 1110 11110
+            return False
+        # check if the next bin eqaul 10
+        if seq_left > 0:
+            if not temp.startswith('10'):
+                return False
+            # if true delete one
+            seq_left -= 1
+    # if the seq left == 0 means all bytes meats the criteria
+    return seq_left == 0
