@@ -25,7 +25,7 @@ def validUTF8(data):
                     # to check for 10xxxxxx 10xxxxxx
                     if temp[8] == '1':
                         if b_len > 9:
-                            if temp[9] == '1' or temp[9] == 0:
+                            if temp[9] == 0:
                                 continue
                             else:
                                 return False
