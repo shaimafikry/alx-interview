@@ -14,7 +14,7 @@ def validUTF8(data):
     seq_left = 0
     for i in data:
         # edge case
-        if i > 255:
+        if i >= 255:
             return False
         # del the 0b at first and fill 0
         temp = bin(i)[2:].zfill(8)
