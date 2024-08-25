@@ -38,5 +38,5 @@ def validUTF8(data):
                 return False
             # if true delete one
             seq_left -= 1
-    # if the seq left == 0 means all bytes meats the criteria
+    # if the seq left == 0 means all bytes meets the criteria
     return seq_left == 0
