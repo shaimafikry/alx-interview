@@ -30,18 +30,15 @@ def validUTF8(data):
         elif temp.startswith('1110'):
             # means 3 seq
             # check for the sec seq
-            if temp[8:].startswith('10') and temp[16:].startswith('10'):
+            if [temp[8:10], temp[16:18]] == ['10', '10']:
                 continue
             else:
                 return False
         elif temp.startswith('11110'):
             # means 4 seq
             # check for the sec seq
-            if temp[8:].startswith('10') and temp[16:].startswith('10'):
-                if temp[32:].startswith('10'):
+            if [temp[8:10], temp[16:18], temp[32:34]] == ['10', '10', '10']:
                     continue
-                else:
-                  return False
             else:
                 return False
         else:
