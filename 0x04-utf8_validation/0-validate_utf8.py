@@ -20,21 +20,21 @@ def validUTF8(data):
         if temp[0] == '0':
             continue
         # check for squences
-        if temp.startswith('110'):
+        elif temp.startswith('110'):
             # means 2 seq
             # check for the sec seq
             if temp[8:].startswith('10'):
                 continue
             else:
                 return False
-        if temp.startswith('1110'):
+        elif temp.startswith('1110'):
             # means 3 seq
             # check for the sec seq
             if temp[8:].startswith('10') and temp[16:].startswith('10'):
                 continue
             else:
                 return False
-        if temp.startswith('11110'):
+        elif temp.startswith('11110'):
             # means 4 seq
             # check for the sec seq
             if temp[8:].startswith('10') and temp[16:].startswith('10'):
