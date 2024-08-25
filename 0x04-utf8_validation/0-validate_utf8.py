@@ -23,8 +23,10 @@ def validUTF8(data):
                 if len(temp) == 9:
                     # to check for 10xxxxxx 10xxxxxx
                     if temp[8] == '1':
-                      if temp[9] == '1' or temp[9] == 0:
-                        continue
+                        if temp[9] == '1' or temp[9] == 0:
+                            continue
+                        else:
+                            return False
                     else:
                         return False
     return True
