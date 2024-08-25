@@ -40,6 +40,8 @@ def validUTF8(data):
             if temp[8:].startswith('10') and temp[16:].startswith('10'):
                 if temp[32:].startswith('10'):
                     continue
+                else:
+                  return False
             else:
                 return False
     return True
