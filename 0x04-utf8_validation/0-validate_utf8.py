@@ -16,10 +16,10 @@ def validUTF8(data):
         # del the 0b at first and fill 0
         temp = bin(i)[2:].zfill(8)
         # case one seq
-        if temp.startswith('0'):
-            continue
-        # check for squences
         if seq_left == 0:
+            if temp.startswith('0'):
+                continue
+            # check for squences
             if temp.startswith('110'):
                 # case 2
                 seq_left = 1
