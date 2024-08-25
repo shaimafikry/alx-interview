@@ -14,7 +14,7 @@ def validUTF8(data):
     seq_left = 0
     for i in data:
         # del the 0b at first and fill 0
-        temp =  format(i, '#010b')[-8:]
+        temp = format(i, '#010b')[-8:]
         # case one seq
         if seq_left == 0:
             if temp.startswith('0'):
