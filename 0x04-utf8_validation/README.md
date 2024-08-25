@@ -52,19 +52,28 @@ The data set can contain multiple characters
 The data will be represented by a list of integers
 Each integer represents 1 byte of data, therefore you only need to handle the 8 least significant bits of each integer
 
-# data = [125, 125, 545, 458] represent the 4 bytes
+### `data = [125, 125, 545, 458] represent the 4 bytes`
 
 
 # plan:
 1 - loop through the list
+
 2- turn the int into binary by using format
+
 3- get only the last 8 digits
+
 4- have a counter to check for the byts num
+
 5- check the first byte, if it has 0 at first nd the num of bytes are 0 continue
+
 6- if it doesnt start with 0, check what it is start with and include it in num of bytes
+
 7- check for the validity if the next byte (Starts with 10) and reduce the num of bytes by one
+
 8- any step not valid would return false inside the loop
+
 9 -  if every byte is vaild meant num of bytes == 0 return true, if not return false
+
 
 
 Both `format(467, '#010b')[-8:]` and `bin(467)[2:].zfill(8)` are used to represent the number `467` as an 8-bit binary string, but they do so in slightly different ways. Let's break them down:
