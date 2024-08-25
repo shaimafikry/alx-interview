@@ -13,6 +13,8 @@ def validUTF8(data):
 """
     seq_left = 0
     for i in data:
+        if i > 255:
+          return False
         # del the 0b at first and fill 0
         temp = bin(i)[2:].zfill(8)
         # case one seq
