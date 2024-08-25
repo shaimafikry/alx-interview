@@ -17,13 +17,13 @@ def validUTF8(data):
         # del the 0b at first and fill 0
         temp = temp[2:].zfill(8)
         # case one seq
-        if temp[0] == '0':
+        if temp.startswith('0'):
             continue
         # check for squences
         elif temp.startswith('110'):
             # case 2
             seq_left = 1
-        elif temp.startswith('110'):
+        elif temp.startswith('1110'):
             # case 3
             seq_left = 2
         elif temp.startswith('11110'):
