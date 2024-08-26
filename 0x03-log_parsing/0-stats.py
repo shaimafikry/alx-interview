@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-""" script that reads stdin line by line and
+'''script that reads stdin line by line and
 computes metrics
-"""
+'''
 
 len_input = 0
 dict_data = {}
