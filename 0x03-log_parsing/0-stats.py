@@ -12,6 +12,8 @@ def check_format(line):
     # print(s_line)
     # <IP Address> - [<date>] "GET /projects/260 HTTP/1.1"
     # <status code> <file size>
+    if len(s_line) != 9:
+        return False
     if not len(s_line[0].split('.')) == 4:
         check += 1
     if not s_line[1] == '-':
