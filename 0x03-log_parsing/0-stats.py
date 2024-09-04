@@ -39,20 +39,17 @@ def main():
             if not data:
                 break
 
-            if not check_format(data):
-                continue
-
-            parts = data.split()
-            # to skip lines that doesnt meet the criteria
-            try:
-                data_size = int(parts[-1])
-                status = parts[-2]
-            except (IndexError, ValueError):
-                continue  # Skip malformed lines
-
-            if status in dict_data:
-                dict_data[status] += 1
-                len_input += data_size
+            if check_format(data):
+                parts = data.split()
+                # to skip lines that doesnt meet the criteria
+                try:
+                    data_size = int(parts[-1])
+                    status = parts[-2]
+                    if status in dict_data:
+                        dict_data[status] += 1
+                        len_input += data_size
+                except (IndexError, ValueError):
+                    continue  # Skip malformed lines
 
             i += 1
             # print (data )
