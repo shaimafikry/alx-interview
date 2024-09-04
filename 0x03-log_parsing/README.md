@@ -11,3 +11,8 @@ if a status code doesn’t appear or is not an integer, don’t print anything f
 format: <status code>: <number>
 status codes should be printed in ascending order
 Warning: In this sample, you will have random value - it’s normal to not have the same output as this one.
+
+# PLAN:
+1 - Check the input format
+2 - create a dict t hold the status ccode and increase its value every time it appears
+3 -

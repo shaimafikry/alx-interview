@@ -3,34 +3,19 @@
 computes metrics
 '''
 import sys
+# libray deals with regex
+import re
+
+# pattern to be checked
+log_patt = re.compile(
+  r'^(\S+) - \[(.*?)\] "GET /projects/\d+ HTTP/1.1" (\d{3}) (\d+)$'
+)
 
 
 def check_format(line):
     """check format of input"""
-    check = 0
-    s_line = line.split(' ')
-    # print(s_line)
-    # <IP Address> - [<date>] "GET /projects/260 HTTP/1.1"
-    # <status code> <file size>
-    if len(s_line) != 9:
-        return False
-    if not len(s_line[0].split('.')) == 4:
-        check += 1
-    if not s_line[1] == '-':
-        check += 1
-    if not s_line[2].startswith('['):
-        check += 1
-    if not s_line[3].endswith(']'):
-        check += 1
-    if not s_line[4].startswith('"G'):
-        check += 1
-    if not s_line[6].startswith('HT'):
-        check += 1
-    if not s_line[7].isdigit():
-        check += 1
-    if not (s_line[8].replace('\n', "")).isdigit():
-        check += 1
-    return check == 0
+    # .strip to remove any trailing whitespaces and \n
+    return log_patt.match(line.strip()) is not None
 
 
 def main():
@@ -43,27 +28,35 @@ def main():
         while True:
             # take the input
             data = sys.stdin.readline()
+            if not data:
+                break
             # print (data)
             # check the format
             # print(check_format(data))
             if not check_format(data):
                 continue
-            data_size = data.split(' ')[-1]
-            len_input += int(data_size)
-            status = data.split(' ')[-2]
+            parts = data.split()
+            # to skip lines that doesnt meet the criteria
+            try:
+                data_size = int(parts[-1])
+                status = parts[-2]
+            except (IndexError, ValueError):
+                continue  # Skip malformed lines
             # if a status code doesn’t appear or is not an integer,
             # don’t print anything for this status code
-            v = dict_data[status] + 1
-            dict_data.update({status: v})
+            if status in dict_data:
+                dict_data[status] += 1
+                len_input += data_size
+            i += 1
             # print (data )
-            if i == 10:
+            if i % 10 == 0:
                 print(f"File size: {len_input}")
                 # status codes should be printed in ascending order
                 for k, v in sorted(dict_data.items()):
                     if v > 0:
                         print(f"{k}: {v}")
                 i = 0
-            i += 1
+
     except KeyboardInterrupt:
         print(f"File size: {len_input}")
         # status codes should be printed in ascending order
