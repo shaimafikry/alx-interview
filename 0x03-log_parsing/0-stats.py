@@ -74,11 +74,10 @@ def main():
                 i = 0
 
     except KeyboardInterrupt:
-        print(f"File size: {len_input}")
-        # status codes should be printed in ascending order
-        for k, v in sorted(dict_data.items()):
-            if v > 0:
-                print(f"{k}: {v}")
+        print_stats(len_input, dict_data)
+
+    if len_input > 0 or any(dict_data.values()):
+        print_stats(len_input, dict_data)
 
 
 if __name__ == "__main__":
