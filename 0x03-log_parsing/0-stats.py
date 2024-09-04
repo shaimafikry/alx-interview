@@ -42,7 +42,7 @@ def main():
             # check the format
             # print(check_format(data))
             if not check_format(data):
-                # print_stats(len_input, dict_data)
+                print_stats(len_input, dict_data)
                 # # Reset for the next batch
                 # dict_data = {key: 0 for key in dict_data}
                 # len_input = 0
