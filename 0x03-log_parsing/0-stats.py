@@ -70,7 +70,6 @@ def main():
 
                 # return to zero
                 dict_data = {key: 0 for key in dict_data}
-                len_input = 0
                 i = 0
 
     except KeyboardInterrupt:
