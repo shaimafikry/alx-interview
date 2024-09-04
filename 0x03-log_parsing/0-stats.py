@@ -67,15 +67,12 @@ def main():
             # print (data )
             if i % 10 == 0:
                 print_stats(len_input, dict_data)
-
-                # return to zero
-                # dict_data = {key: 0 for key in dict_data}
                 i = 0
 
     except KeyboardInterrupt:
         print_stats(len_input, dict_data)
 
-    if len_input > 0 or any(dict_data.values()):
+    if len_input == 0 or any(dict_data.values()):
         print_stats(len_input, dict_data)
 
 
