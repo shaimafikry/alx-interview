@@ -39,3 +39,22 @@ To solve the N Queens problem, you need to place N queens on an N×N chessboard 
 # SOLVE
 N  -> represents the numer of queens
 result ->  every solution in a line
+1- define a func to check the constrains:
+    to check if the same queen in same row or column or diagonal
+
+2- define a recursive func to place queen:<br>
+      it takes n , row , list of queens<br>
+      if the row == n:<br>
+       it prints and return<br>
+      then it loops through the column, place a queen, check constrains:<br>
+      if it passes:<br>
+       a new queen added
+
+
+3- handle n cases if it's less than 4 or not a digit: <br>
+we take it from the stdinput as string
+so we:<br>
+1- check the length of arguments<br>
+2- check if its a string digit<br>
+3- turn it into a num then check if it's less than 4<br>
+( order is important)
