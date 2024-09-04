@@ -18,6 +18,14 @@ def check_format(line):
     return log_patt.match(line.strip()) is not None
 
 
+def print_stats(len_input, dict_data):
+    """Print statistics"""
+    print(f"File size: {len_input}")
+    for k, v in sorted(dict_data.items()):
+        if v > 0:
+            print(f"{k}: {v}")
+
+
 def main():
     """ func main"""
     len_input = 0
@@ -34,6 +42,11 @@ def main():
             # check the format
             # print(check_format(data))
             if not check_format(data):
+                print_stats(len_input, dict_data)
+                # Reset for the next batch
+                dict_data = {key: 0 for key in dict_data}
+                len_input = 0
+                i = 0
                 continue
 
             parts = data.split()
@@ -53,11 +66,7 @@ def main():
             i += 1
             # print (data )
             if i % 10 == 0:
-                print(f"File size: {len_input}")
-                # status codes should be printed in ascending order
-                for k, v in sorted(dict_data.items()):
-                    if v > 0:
-                        print(f"{k}: {v}")
+                print_stats(len_input, dict_data)
 
                 # return to zero
                 dict_data = {key: 0 for key in dict_data}
