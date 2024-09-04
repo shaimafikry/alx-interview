@@ -35,6 +35,7 @@ def main():
             # print(check_format(data))
             if not check_format(data):
                 continue
+
             parts = data.split()
             # to skip lines that doesnt meet the criteria
             try:
@@ -44,9 +45,11 @@ def main():
                 continue  # Skip malformed lines
             # if a status code doesn’t appear or is not an integer,
             # don’t print anything for this status code
+
             if status in dict_data:
                 dict_data[status] += 1
                 len_input += data_size
+
             i += 1
             # print (data )
             if i % 10 == 0:
@@ -55,6 +58,10 @@ def main():
                 for k, v in sorted(dict_data.items()):
                     if v > 0:
                         print(f"{k}: {v}")
+
+                # return to zero
+                dict_data = {key: 0 for key in dict_data}
+                len_input = 0
                 i = 0
 
     except KeyboardInterrupt:
