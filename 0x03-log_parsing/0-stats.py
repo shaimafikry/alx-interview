@@ -38,15 +38,8 @@ def main():
             data = sys.stdin.readline()
             if not data:
                 break
-            # print (data)
-            # check the format
-            # print(check_format(data))
+
             if not check_format(data):
-                print_stats(len_input, dict_data)
-                # # Reset for the next batch
-                # dict_data = {key: 0 for key in dict_data}
-                # len_input = 0
-                # i = 0
                 continue
 
             parts = data.split()
@@ -56,8 +49,6 @@ def main():
                 status = parts[-2]
             except (IndexError, ValueError):
                 continue  # Skip malformed lines
-            # if a status code doesn’t appear or is not an integer,
-            # don’t print anything for this status code
 
             if status in dict_data:
                 dict_data[status] += 1
