@@ -31,7 +31,7 @@ def main():
     len_input = 0
     dict_data = {'200': 0, '301': 0, '400': 0, '401': 0,
                  '403': 0, '404': 0, '405': 0, '500': 0}
-    i = 0
+    i = 1
     try:
         while True:
             # take the input
@@ -70,7 +70,7 @@ def main():
 
                 # return to zero
                 dict_data = {key: 0 for key in dict_data}
-                i = 0
+                i = 1
 
     except KeyboardInterrupt:
         print_stats(len_input, dict_data)
