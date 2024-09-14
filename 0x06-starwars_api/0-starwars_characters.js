@@ -3,7 +3,7 @@
 const request = require('request');
 
 // Step 1: Promisify the request function
-function requestPromise(url) {
+function requestPromise (url) {
   return new Promise((resolve, reject) => {
     request(url, (error, response, body) => {
       if (error) {
@@ -33,7 +33,7 @@ async function fetchMovieCharacters(movieID) {
     const movieJson = JSON.parse(movieData);
     const characters = movieJson.characters;
     for (const characterUrl of characters) {
-      const characterData = await requestPromise(characterUrl);
+      const characterData = await requestPromise (characterUrl);
       const characterJson = JSON.parse(characterData);
       console.log(characterJson.name);
     }
