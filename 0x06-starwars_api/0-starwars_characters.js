@@ -1,5 +1,5 @@
 #!/usr/bin/node
-// request api through mode
+// request API through mode
 const request = require('request');
 
 // Step 1: Promisify the request function
@@ -25,20 +25,22 @@ if (!movieID) {
 }
 
 // Step 3: Async function to fetch movie details and character names in order
-async function fetchMovieCharacters(movieID) {
+async function fetchMovieCharacters (movieID) {
   try {
     // Fetch the data
     const movieUrl = `https://swapi.dev/api/films/${movieID}/`;
     const movieData = await requestPromise(movieUrl);
     const movieJson = JSON.parse(movieData);
     const characters = movieJson.characters;
+
     for (const characterUrl of characters) {
-      const characterData = await requestPromise (characterUrl);
+      const characterData = await requestPromise(characterUrl);
       const characterJson = JSON.parse(characterData);
       console.log(characterJson.name);
     }
   } catch (error) {
-    console.error("Error:", error.message);
+    console.error('Error:', error.message);
   }
 }
+
 fetchMovieCharacters(movieID);
