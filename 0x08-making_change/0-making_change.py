@@ -16,7 +16,7 @@ def makeChange(coins, total):
     coins.sort(reverse=True)
 
     # case total is less than the ssmallest coin
-    if total < coins[-1] or len(coins) == 0:
+    if total < coins[-1]:
         return -1
 
     for coin in coins:
@@ -24,7 +24,9 @@ def makeChange(coins, total):
         while total >= coin:
             total -= coin
             count += 1
+
     # if total is negetive means it couldnt be met
-    if total < 0:
+    if total != 0:
         return -1
+
     return count
