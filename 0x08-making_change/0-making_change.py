@@ -12,6 +12,11 @@ def makeChange(coins, total):
     if total <= 0:
         return 0
     count = 0
+
+    # check if the list is empty
+    if len(coins) == 0:
+        return -1
+
     # sort the list in descending order
     coins.sort(reverse=True)
 
