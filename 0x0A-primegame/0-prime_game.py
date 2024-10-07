@@ -32,7 +32,7 @@ def isWinner(x, nums):
     mari = 0
 
     # handle edge cases
-    if len(nums) == 0:
+    if len(nums) == 0 or x <= 0:
         return None
 
     # loop through the list
@@ -45,28 +45,28 @@ def isWinner(x, nums):
             continue
         num_range = [i for i in range(1, num + 1)]
         # print("unum range in big loop",num_range, len(num_range))
-        index = 0
         role = 0
         while len(num_range) != 1:
             # check for prime
             # print("num range in small lop", num_range)
-            digit = num_range[index]
-            if isPrime(digit):
-                role += 1
-                # mari += 1
-                remove_list = isMulti(digit, num_range)
-                for m in remove_list:
-                    num_range.remove(m)
-                index -= 1
+            for digit in num_range:
+                if isPrime(digit):
+                    remove_list = isMulti(digit, num_range)
+                    for m in remove_list:
+                        num_range.remove(m)
+                    role += 1
+                    break
+        # score at the end of th turn
+        if role % 2 != 0:
+            mari += 1
+        else:
+            ben += 1
 
-            if role % 2 != 0:
-                mari += 1
-            else:
-                ben += 1
-            index += 1
         # print("num_range", num_range)
 
     if ben > mari:
         return "Ben"
-    else:
+    elif ben < mari:
         return "Mari"
+    else:
+        return None
