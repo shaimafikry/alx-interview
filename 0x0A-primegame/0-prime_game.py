@@ -58,7 +58,7 @@ def isWinner(x, nums):
                     for m in remove_list:
                         num_range.remove(m)
                     role += 1
-                    break
+                    # break
         # score at the end of th turn
         if role % 2 != 0:
             mari += 1
