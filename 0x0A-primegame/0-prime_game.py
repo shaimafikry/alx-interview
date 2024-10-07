@@ -14,12 +14,13 @@ def isPrime(x):
 
 def isMulti(num, num_range):
     """ return multi of a digit"""
-    multi = []
-    for i in (num_range):
-        if i % num == 0:
-            multi.append(i)
-    # print("multi list", multi)
-    return multi
+    return [i for i in num_range if i % num == 0]
+    # multi = []
+    # for i in (num_range):
+    #     if i % num == 0:
+    #         multi.append(i)
+    # # print("multi list", multi)
+    # return multi
 
 
 def isWinner(x, nums):
@@ -39,10 +40,11 @@ def isWinner(x, nums):
     for num in nums:
         # every num represent a new round st mare and ends with bin
         # handle if its 1
-        if num == 1:
+        if num == 1 or num == 0:
             # nothing fo mari to pick
             ben += 1
             continue
+
         num_range = [i for i in range(1, num + 1)]
         # print("unum range in big loop",num_range, len(num_range))
         role = 0
