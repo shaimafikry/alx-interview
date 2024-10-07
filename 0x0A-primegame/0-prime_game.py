@@ -49,7 +49,7 @@ def isWinner(x, nums):
         num_range = [i for i in range(1, num + 1)]
         # print("unum range in big loop",num_range, len(num_range))
         role = 0
-        while len(num_range) != 1:
+        while any(isPrime(digit) for digit in num_range):
             # check for prime
             # print("num range in small lop", num_range)
             for digit in num_range:
