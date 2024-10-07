@@ -6,7 +6,8 @@ def isPrime(x):
     """detec if num is prime"""
     if x == 1:
         return False
-    for m in range(2, x):
+    # range ends with sqrt(x), after this num all digits are doubled
+    for m in range(2, int(x**0.5) + 1):
         if x % m == 0:
             return False
     return True
